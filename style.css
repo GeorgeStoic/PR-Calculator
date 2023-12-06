@@ -12,10 +12,20 @@ body{
     color: #191d8b;
     height: 100vh;
 }
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+}
+.dark{
+    background-color: black;
+    color: white;
+}
 .header{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     color: #ffff;
     background-color: #1c1f8e;
     padding: 20px;
@@ -26,7 +36,7 @@ body{
     justify-content: center;
     color: #ffff;
     background-color: #1c1f8e;
-    padding: 20px;
+    padding: 50px;
 }
 input{
     color: #191d8b;
@@ -36,6 +46,7 @@ input{
     height: 50px;
     border: 2px solid #191d8b;
     border-radius: 10px;
+    transition: all 0.3s;
 }
 input::placeholder{
     color: rgb(93, 93, 93);
@@ -56,6 +67,7 @@ input:focus{
     align-items: center;
     justify-content: center;
     height: 100vh;
+    transition: all 0.3s;
 }
 .inner__container{
     text-align: center;
@@ -84,7 +96,14 @@ button{
     font-size: 18px;
     font-weight: bold;
     background-color: white;
+    transition: all 0.3s;
 
+}
+.darkmode__button{
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 12px;
 }
 .result-list{
     height: 100px;
@@ -103,4 +122,25 @@ button{
 .first-block,.second-block{
     display: flex;
     flex-direction: column;
+}
+.weight__type{
+    display: flex;
+    gap: 20px;
+}
+.variant{
+    height: 20px;
+    width:20px;
+}
+@media (max-width: 800px){
+    h1{
+        font-size: 18px;
+    }
+}
+@media (max-width: 450px){
+    h1{
+        display: none;
+    }
+    .header{
+        justify-content: space-around;
+    }
 }
