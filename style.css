@@ -81,7 +81,16 @@ input:focus{
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
+}
+i{
+    font-size: 24px;
+}
+.buttons{
+    display: flex;
     gap: 20px;
+    align-items: center;
+    justify-content: center;
 }
 .active{
     border: 2px solid red;
@@ -89,15 +98,14 @@ input:focus{
 button{
     color:#191d8b;
     cursor: pointer;
-    width: 150px;
+    width: 75px;
     height:50px;
     border-radius: 10px;
     border: 2px solid #191d8b;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     background-color: white;
     transition: all 0.3s;
-
 }
 .darkmode__button{
     width: 80px;

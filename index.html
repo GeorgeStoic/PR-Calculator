@@ -22,15 +22,19 @@
                     <input class="variant" id="var2" type="checkbox"> lbs
                 </label>
             </div>
-            <div class="content">
+            <div class="content" id="content">
                 <div class="first-block">
                     <input class="user__input-reps" id="reps" type="number" placeholder="Reps">
                 </div>
+                <i class="fa-solid fa-x"></i>
                 <div class="second-block">
                     <input class="user__input-weight" id="weight" type="number" placeholder="Weight">
                 </div>
             </div>
-            <button class="calculate" id="calc">Calculate</button>
+            <div class="buttons">
+                <button class="calculate" id="calc"><i class="fa-solid fa-calculator"></i></button>
+                <button class="switch" id="switch"><i class="fa-solid fa-repeat"></i></button>
+            </div>
             <div class="result-list">
                 <p class="result blue-bold" id="para"></p>
                 <p class="weight-index blue-bold" id="index"></p>
@@ -42,5 +46,6 @@
         <p class="note">calculations aren't 100% accurate, Keep in mind that we use a formula which provides a probable answer</p>
     </footer>
     <script type="text/javascript" src="app.js"></script>
+    <script src="https://kit.fontawesome.com/cf852e3d0e.js" crossorigin="anonymous"></script>
 </body>
 </html>
