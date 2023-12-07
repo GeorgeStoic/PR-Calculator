@@ -93,8 +93,6 @@ document.addEventListener("DOMContentLoaded", () =>{
 });
 //main event listener
 calcButton.addEventListener('click',()=>{
-  //checking if user entered number from 1 to 10
-  if(repsInput.value <= 10 && repsInput.value >= 1){
   //kg variant 
    if(checkBox.checked){
     //checking if value of input valley isn't empty, negative or integer
@@ -168,10 +166,7 @@ calcButton.addEventListener('click',()=>{
    }
 }
    }
-  }else{
-    alert("Please enter rep amount from 1 to 10");
-  }
-});
+  });
 //removing active status if all statements are true
 weightInput.addEventListener('input', () => {
   weightInput.classList.remove("active");
