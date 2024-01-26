@@ -1,208 +1,174 @@
-//TODO:list of possible reps;
+//TODO:list of possible reps;UI friendly
 
 //variables of elements
-const weightInput = document.getElementById("weight");
-const repsInput = document.getElementById("reps");
-const calcButton = document.getElementById("calc");
-const para = document.getElementById("para");
-const index = document.getElementById("index");
-const count = document.getElementById("count");
-const checkBox = document.getElementById("var1");
-const checkBox2 = document.getElementById("var2");
-const container = document.getElementById("container");
-const darkModeButton = document.getElementById("darkmode__button");
-const switcher = document.getElementById("switch");
-const contentDiv = document.getElementById("content");
-//adding dark mode class on elements after user clicked on darkmode button
-darkModeButton.textContent = "Dark Mode";
-darkModeButton.value = "dark"
-darkModeButton.addEventListener("click", () => {
-  if (darkModeButton.value === "dark") {
-    // Switch to dark mode
-    container.classList.add("dark");
-    weightInput.classList.add("dark");
-    repsInput.classList.add("dark");
-    calcButton.classList.add("dark");
-    para.classList.add("dark");
-    index.classList.add("dark");
-    count.classList.add("dark");
-    darkModeButton.classList.add("dark");
-    switcher.classList.add("dark");
-    darkModeButton.textContent = "Light Mode";
-    darkModeButton.value = "light";
-  } else if (darkModeButton.value === "light") {
-    // Switch to light mode
-    container.classList.remove("dark");
-    weightInput.classList.remove("dark");
-    repsInput.classList.remove("dark");
-    calcButton.classList.remove("dark");
-    para.classList.remove("dark");
-    index.classList.remove("dark");
-    count.classList.remove("dark");
-    darkModeButton.classList.remove("dark");
-    switcher.classList.remove("dark");
-    darkModeButton.textContent = "Dark Mode";
-    darkModeButton.value = "dark";
-  }
-});
-//switcher
-contentDiv.value = "row";
-switcher.addEventListener("click", ()=>{
-  if(contentDiv.value == "row"){
-    contentDiv.style = "flex-direction: row-reverse;"
-    contentDiv.value = "row-reversed"
-  }else{
-    contentDiv.style = "flex-direction: row;"
-    contentDiv.value = "row"
-  }
-});
-//change input field with arrow key
-repsInput.addEventListener("keydown", (e) =>{
-  if (e.key === "ArrowRight") {
-    e.preventDefault();
-    weightInput.focus();
-  }
-});
-weightInput.addEventListener("keydown", (e) =>{
-  if (e.key === "ArrowLeft") {
-    e.preventDefault();
-    repsInput.focus();
-  }
-});
-//Event listener for checkboxes
-checkBox.addEventListener("change",()=> {
-  if (checkBox.checked) {
-    checkBox2.checked = false;
-    index.textContent = "kg";
-    para.textContent = "";
-    count.textContent = "";
-  }
-});
-checkBox2.addEventListener("change",() =>{
-  if (checkBox2.checked) {
-    checkBox.checked = false;
-    index.textContent = "lbs";
-    para.textContent = "";
-    count.textContent = "";
-  }
-});
-//Default startup (kg)
-document.addEventListener("DOMContentLoaded", () =>{
-  checkBox.checked = !checkBox2.checked;
-  index.textContent = "kg";
-});
-//main event listener
-calcButton.addEventListener('click',()=>{
-  //kg variant 
-   if(checkBox.checked){
-    //checking if value of input valley isn't empty, negative or integer
-    if(weightInput.value !== "" && repsInput.value !== "" && weightInput.value > 0 && repsInput.value > 0 && repsInput.value % 1 === 0){
-      if(repsInput.value <= 1){
-      para.textContent = weightInput.value;
-      count.textContent = "x1";
-      weightInput.value = "";
-      repsInput.value = "";
-      weightInput.classList.remove("active");
-      repsInput.classList.remove("active");
-      }else{
-        //main logic of calculator (kg)
-      //calculation formula
-      const answer = (repsInput.value / 30 + 1) * weightInput.value;
-      para.textContent = Math.round(answer);
-      count.textContent = "x1";
-      weightInput.value = "";
-      repsInput.value = "";
-      weightInput.classList.remove("active");
-      repsInput.classList.remove("active");
-      //adding active status if numbers from input are empty, negative or integer
-      }
- }else {
-   if (weightInput.value === "" || weightInput.value < 0) {
-       weightInput.classList.add("active");
-   } else {
-       weightInput.classList.remove("active");
-   }
-   if (repsInput.value === "" || repsInput.value < 0 || repsInput.value % 1 !== 0) {
-       repsInput.classList.add("active");
-   } else {
-       repsInput.classList.remove("active");
-   }
-}   //lbs variant
-   }else{
-    checkBox2.checked = !checkBox.checked;
-      //checking if value of input valley isn't empty, negative or integer
-    if(weightInput.value !== "" && repsInput.value !== "" && weightInput.value > 0 && repsInput.value > 0 && repsInput.value % 1 === 0){
-      if(repsInput.value <= 1){
-        para.textContent = weightInput.value;
-        count.textContent = "x1";
-        weightInput.value = "";
-        repsInput.value = "";
-        weightInput.classList.remove("active");
-        repsInput.classList.remove("active");
-      }else{
-        //main logic of calculator (lbs)
-      const lbsReps = parseInt(repsInput.value);
-      const lbsWeight = parseInt(weightInput.value);
-      // Calculate bench press max in lbs
-      const answer = (lbsReps / 30 + 1) * lbsWeight;
-      para.textContent = Math.round(answer);
-      count.textContent = "x1";
-      weightInput.value = "";
-      repsInput.value = "";
-      weightInput.classList.remove("active");
-      repsInput.classList.remove("active");
-      }
-      //adding active status if numbers from input are empty, negative or integer
- }else {
-   if (weightInput.value === "" || weightInput.value < 0) {
-       weightInput.classList.add("active");
-   } else {
-       weightInput.classList.remove("active");
-   }
-   if (repsInput.value === "" || repsInput.value < 0 || repsInput.value % 1 !== 0) {
-       repsInput.classList.add("active");
-   } else {
-       repsInput.classList.remove("active");
-   }
-}
-   }
+$(document).ready(function () {
+  const weightInput = $("#weight");
+  const repsInput = $("#reps");
+  const calcButton = $("#calc");
+  const para = $("#para");
+  const index = $("#index");
+  const count = $("#count");
+  const checkBox = $("#var1");
+  const checkBox2 = $("#var2");
+  const container = $("#container");
+  const darkModeButton = $("#darkmode__button");
+  const switcher = $("#switch");
+  const contentDiv = $("#content");
+
+  //darkmode
+
+  darkModeButton.text("Dark Mode").val("dark");
+
+  darkModeButton.on("click", function () {
+    if ($(this).val() === "dark") {
+      container.add(weightInput).add(repsInput).add(calcButton).add(para).add(index).add(count)
+        .add(darkModeButton).add(switcher).addClass("dark");
+      darkModeButton.text("Light Mode").val("light");
+    } else if ($(this).val() === "light") {
+      container.add(weightInput).add(repsInput).add(calcButton).add(para).add(index).add(count)
+        .add(darkModeButton).add(switcher).removeClass("dark");
+      darkModeButton.text("Dark Mode").val("dark");
+    }
   });
-//removing active status if all statements are true
-weightInput.addEventListener('input', () => {
-  weightInput.classList.remove("active");
-});
-repsInput.addEventListener('input', () => {
-  repsInput.classList.remove("active");
-});
-//input valley restriction (up to 4)
-weightInput.addEventListener('input', () => {
-  if (weightInput.value.length > 4) {
-      weightInput.value = weightInput.value.slice(0, 4);
-  }
-});
-repsInput.addEventListener('input', () => {
-  if (repsInput.value.length > 4) {
-      repsInput.value = repsInput.value.slice(0, 4);
-  }
+
+  contentDiv.val("row");
+
+  switcher.on("click", function () {
+    if (contentDiv.val() === "row") {
+      contentDiv.css("flex-direction", "row-reverse").val("row-reversed");
+    } else {
+      contentDiv.css("flex-direction", "row").val("row");
+    }
+  });
+
+  repsInput.on("keydown", function (e) {
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      weightInput.focus();
+    }
+  });
+
+  weightInput.on("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      repsInput.focus();
+    }
+  });
+
+  checkBox.on("change", function () {
+    if ($(this).prop("checked")) {
+      checkBox2.prop("checked", false);
+      index.text("kg");
+      para.text("");
+      count.text("");
+    }
+  });
+
+  checkBox2.on("change", function () {
+    if ($(this).prop("checked")) {
+      checkBox.prop("checked", false);
+      index.text("lbs");
+      para.text("");
+      count.text("");
+    }
+  });
+
+  $(document).on("DOMContentLoaded", function () {
+    checkBox.prop("checked", !checkBox2.prop("checked"));
+    index.text("kg");
+  });
+
+  //calculator
+
+  calcButton.on("click", function () {
+    if (checkBox.prop("checked")) {
+      if (weightInput.val() !== "" && repsInput.val() !== "" && weightInput.val() > 0 && repsInput.val() > 0 && repsInput.val() % 1 === 0) {
+        if (repsInput.val() <= 1) {
+          para.text(weightInput.val());
+          count.text("x1");
+          weightInput.val("");
+          repsInput.val("");
+          weightInput.removeClass("active");
+          repsInput.removeClass("active");
+        } else {
+          const answer = (repsInput.val() / 30 + 1) * weightInput.val();
+          para.text(Math.round(answer));
+          count.text("x1");
+          weightInput.val("");
+          repsInput.val("");
+          weightInput.removeClass("active");
+          repsInput.removeClass("active");
+        }
+      } else {
+        if (weightInput.val() === "" || weightInput.val() < 0) {
+          weightInput.addClass("active");
+        } else {
+          weightInput.removeClass("active");
+        }
+        if (repsInput.val() === "" || repsInput.val() < 0 || repsInput.val() % 1 !== 0) {
+          repsInput.addClass("active");
+        } else {
+          repsInput.removeClass("active");
+        }
+      }
+    } else {
+      checkBox2.prop("checked", !checkBox.prop("checked"));
+      if (weightInput.val() !== "" && repsInput.val() !== "" && weightInput.val() > 0 && repsInput.val() > 0 && repsInput.val() % 1 === 0) {
+        if (repsInput.val() <= 1) {
+          para.text(weightInput.val());
+          count.text("x1");
+          weightInput.val("");
+          repsInput.val("");
+          weightInput.removeClass("active");
+          repsInput.removeClass("active");
+        } else {
+          const lbsReps = parseInt(repsInput.val());
+          const lbsWeight = parseInt(weightInput.val());
+          const answer = (lbsReps / 30 + 1) * lbsWeight;
+          para.text(Math.round(answer));
+          count.text("x1");
+          weightInput.val("");
+          repsInput.val("");
+          weightInput.removeClass("active");
+          repsInput.removeClass("active");
+        }
+      } else {
+        if (weightInput.val() === "" || weightInput.val() < 0) {
+          weightInput.addClass("active");
+        } else {
+          weightInput.removeClass("active");
+        }
+        if (repsInput.val() === "" || repsInput.val() < 0 || repsInput.val() % 1 !== 0) {
+          repsInput.addClass("active");
+        } else {
+          repsInput.removeClass("active");
+        }
+      }
+    }
+  });
+
+  //error
+
+  weightInput.on("input", function () {
+    weightInput.removeClass("active");
+  });
+
+  repsInput.on("input", function () {
+    repsInput.removeClass("active");
+  });
+
+  weightInput.on("input", function () {
+    if (weightInput.val().length > 4) {
+      weightInput.val(weightInput.val().slice(0, 4));
+    }
+  });
+
+  repsInput.on("input", function () {
+    if (repsInput.val().length > 4) {
+      repsInput.val(repsInput.val().slice(0, 4));
+    }
+  });
 });
 
-/*  happy new year!  
+//last edit: 26.1.2024
 
-        2024
-         A
-        /=\               /\  /\    ___  _ __  _ __ __    __
-      i/ O \i            /  \/  \  / _ \| '__|| '__|\ \  / /
-      /=====\           / /\  /\ \|  __/| |   | |    \ \/ /
-      /  i  \           \_\ \/ /_/ \___/|_|   |_|     \  /
-    i/ O * O \i                                       / /
-    /=========\        __  __                        /_/    _
-    /  *   *  \        \ \/ /        /\  /\    __ _  ____  | |
-  i/ O   i   O \i       \  /   __   /  \/  \  / _` |/ ___\ |_|
-  /=============\       /  \  |__| / /\  /\ \| (_| |\___ \  _
-  /  O   i   O  \      /_/\_\      \ \ \/ / / \__,_|\____/ |_|
-i/ *   O   O   * \i
-/=================\
-       |___|
-
-last edit: 07.12.2023
-*/

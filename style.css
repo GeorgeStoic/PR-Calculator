@@ -92,6 +92,18 @@ i{
     align-items: center;
     justify-content: center;
 }
+[data-tooltip]{
+    position: relative;
+}
+[data-tooltip]:hover::after{
+    content: attr(data-tooltip);
+    font-size: 14px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 5px;
+}
 .active{
     border: 2px solid red;
 }

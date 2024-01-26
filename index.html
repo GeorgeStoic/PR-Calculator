@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>PR Calculator</title>
 </head>
 <body>
     <header class="header">
-        <a class="formula" href="https://www.google.com/search?q=Epley+formula&sca_esv=588668658&ei=L4FxZZ_ADM_Axc8Pr_Wp0AQ&ved=0ahUKEwjfk8qL8_yCAxVPYPEDHa96CkoQ4dUDCBA&uact=5&oq=Epley+formula&gs_lp=Egxnd3Mtd2l6LXNlcnAiDUVwbGV5IGZvcm11bGEyBhAAGAcYHjILEAAYgAQYigUYkQIyBRAAGIAEMgUQABiABDIFEAAYgAQyBBAAGB4yBhAAGAgYHjIGEAAYCBgeMgYQABgIGB4yCxAAGIAEGIoFGIYDSNwBUABYAHAAeAGQAQCYAaEBoAGhAaoBAzAuMbgBA8gBAPgBAeIDBBgAIEGIBgE&sclient=gws-wiz-serp" target="_blank">Formula</a>
+        <a class="formula" href="https://www.google.com/search?q=Epley+formula&sca_esv=588668658&ei=L4FxZZ_ADM_Axc8Pr_Wp0AQ&ved=0ahUKEwjfk8qL8_yCAxVPYPEDHa96CkoQ4dUDCBA&uact=5&oq=Epley+formula&gs_lp=Egxnd3Mtd2l6LXNlcnAiDUVwbGV5IGZvcm11bGEyBhAAGAcYHjILEAAYgAQYigUYkQIyBRAAGIAEMgUQABiABDIFEAAYgAQyBBAAGB4yBhAAGAgYHjIGEAAYCBgeMgYQABgIGB4yCxAAGIAEGIoFGIYDSNwBUABYAHAAeAGQAQCYAaEBoAGhAaoBAzAuMbgBA8gBAPgBAeIDBBgAIEGIBgE&sclient=gws-wiz-serp" target="_blank"> View Formula</a>
         <h1 class="title">PR Calculator</h1>
         <button id="darkmode__button" class="darkmode__button"></button>
     </header>
@@ -32,8 +33,8 @@
                 </div>
             </div>
             <div class="buttons">
-                <button class="calculate" id="calc"><i class="fa-solid fa-calculator"></i></button>
-                <button class="switch" id="switch"><i class="fa-solid fa-repeat"></i></button>
+                <button class="calculate" data-tooltip="Calculate" id="calc"><i class="fa-solid fa-calculator"></i></button>
+                <button class="switch" data-tooltip="Switch" id="switch"><i class="fa-solid fa-repeat"></i></button>
             </div>
             <div class="result-list">
                 <p class="result blue-bold" id="para"></p>
